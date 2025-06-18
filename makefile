@@ -3,7 +3,7 @@
 # Run the FastAPI server with uvicorn, assuming your app is in main.py
 run:
 	@echo "🚀 Starting FastAPI server on http://localhost:8000"
-	uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+	uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 format:
 	@echo "🎨 Formatting code with Ruff..."
