@@ -1,0 +1,25 @@
+{
+  "name": "FastAPI Backend",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "[python]": {
+          "editor.codeActionsOnSave": [
+            "source.fixAll.ruff"
+          ]
+        }
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "charliermarsh.ruff"
+      ]
+    }
+  },
+  "forwardPorts": [
+    8000
+  ]
+}
