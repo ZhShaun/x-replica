@@ -6,6 +6,7 @@
   "customizations": {
     "vscode": {
       "settings": {
+        "editor.formatOnSave": true,
         "[python]": {
           "editor.codeActionsOnSave": [
             "source.fixAll.ruff"
@@ -15,7 +16,10 @@
       "extensions": [
         "ms-python.python",
         "ms-python.vscode-pylance",
-        "charliermarsh.ruff"
+        "charliermarsh.ruff",
+        "otovo-oss.htmx-tags",
+        "sidthesloth.html5-boilerplate",
+        "ms-azuretools.vscode-docker"
       ]
     }
   },
