@@ -20,7 +20,8 @@
         "otovo-oss.htmx-tags",
         "sidthesloth.html5-boilerplate",
         "ms-azuretools.vscode-docker",
-        "AnbuselvanRocky.bootstrap5-vscode"
+        "AnbuselvanRocky.bootstrap5-vscode",
+        "yy0931.vscode-sqlite3-editor"
       ]
     }
   },

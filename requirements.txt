@@ -4,3 +4,4 @@ ruff
 mypy
 jinja2
 python-multipart
+sqlmodel
