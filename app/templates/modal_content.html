@@ -1,10 +1,31 @@
-<div class="modal-dialog modal-dialog-centered">
+<div class="modal-dialog modal-dialog-centered" id="myModalDialog">
     <div class="modal-content">
         <div class="modal-header">
             <h5 class="modal-title">{{ modal_title }}</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <p>{{ modal_body }}</p>
+            <div id="modal-response-message" class="mb-3">
+                <p>{{ modal_body }}</p>
+            </div>
+
+            <form hx-post="/submit-modal-form" hx-target="#modal-response-message" hx-swap="innerHTML"
+                hx-on::after-request="if (event.detail.successful) {
+                                     this.closest('.modal').querySelector('[data-bs-dismiss=modal]').click();
+                                 }">
+                <div class="mb-3">
+                    <label for="nameInput" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="nameInput" name="user_name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="messageInput" class="form-label">Your Message</label>
+                    <textarea class="form-control" id="messageInput" name="user_message" rows="3" required></textarea>
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary">Submit Form</button>
+                </div>
+            </form>
+
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
