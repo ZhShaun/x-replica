@@ -19,11 +19,13 @@
         "charliermarsh.ruff",
         "otovo-oss.htmx-tags",
         "sidthesloth.html5-boilerplate",
-        "ms-azuretools.vscode-docker"
+        "ms-azuretools.vscode-docker",
+        "AnbuselvanRocky.bootstrap5-vscode"
       ]
     }
   },
   "forwardPorts": [
     8000
-  ]
+  ],
+  "postAttachCommand": "uvicorn app.main:app --reload --host 0.0.0.0 --port 8000"
 }

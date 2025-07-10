@@ -1,17 +1,19 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.responses import HTMLResponse
+from starlette.responses import RedirectResponse
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
 
 @app.get("/")
 def read_root():
     """
     root endpoint of the API, returning static part of website
     """
-    return FileResponse("app/static/index.html")
+    return RedirectResponse(url="static/index.html")
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
 @app.get("/data")
 def click_button():
