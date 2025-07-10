@@ -4,3 +4,11 @@
     object-fit: cover;
 }
 
+/* In static/main.css */
+.fixed-bottom-right {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000; /* Important to keep it on top */
+}
+

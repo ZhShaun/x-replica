@@ -1,8 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, HTMLResponse
+from fastapi.templating import Jinja2Templates
 
+templates = Jinja2Templates(directory="app/templates")
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
+
 
 @app.get("/")
 def read_root():
@@ -11,9 +15,7 @@ def read_root():
     """
     return FileResponse("app/static/index.html")
 
-app.mount("/static", StaticFiles(directory="app/static"), name="static")
-
-@app.get("/data")
-def click_button():
-    html_content = "<h2>Here is your new content!</h2><p>It was loaded successfully from the server.</p>"
-    return HTMLResponse(content=html_content)
+@app.get("/modal", response_class=HTMLResponse)
+def get_modal(request: Request):
+    context = {"request": request, "modal_title": "Dynamic Modal Title", "modal_body": "This text came from the backend!"}
+    return templates.TemplateResponse("modal_content.html", context)
