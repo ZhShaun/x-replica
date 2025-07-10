@@ -14,7 +14,7 @@ def read_root():
     """
     root endpoint of the API, returning static part of website
     """
-    return RedirectResponse(url="static/index.html")
+    return FileResponse(url="static/index.html")
 
 @app.get("/modal", response_class=HTMLResponse)
 def get_modal(request: Request):
