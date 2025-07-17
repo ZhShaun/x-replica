@@ -1,4 +1,5 @@
 from typing import Optional
+from datetime import datetime
 from sqlmodel import Field, SQLModel
 
 class UserMessageBase(SQLModel):
@@ -7,9 +8,9 @@ class UserMessageBase(SQLModel):
 
 class UserMessage(UserMessageBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    # You might want to add a timestamp
-    # created_at: datetime = Field(default_factory=datetime.utcnow, nullable=False)
-    # For now, let's keep it simple.
+    created_at: datetime = Field(default_factory=datetime.now, nullable=False)
+    class Config:
+        json_encoders = {datetime: lambda dt: dt.isoformat()}
 
 # Optional: Pydantic models for request/response if needed for validation/filtering
 class UserMessageCreate(UserMessageBase):
