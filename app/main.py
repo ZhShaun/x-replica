@@ -3,12 +3,14 @@ from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 
 from .db import create_db_and_tables
-from .routers import web, messages # Import your new routers
+from .routers import web, messages  # Import your new routers
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_db_and_tables()
     yield
+
 
 app = FastAPI(lifespan=lifespan)
 

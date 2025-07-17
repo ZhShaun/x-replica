@@ -5,9 +5,11 @@ from fastapi.templating import Jinja2Templates
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
+
 @router.get("/", response_class=HTMLResponse)
 async def read_root():
     return FileResponse("app/static/index.html")
+
 
 @router.get("/modal", response_class=HTMLResponse)
 def get_modal(request: Request):
