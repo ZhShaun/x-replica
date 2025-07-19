@@ -1,14 +1,123 @@
-.avatar-sm {
-    width: 48px;
-    height: 48px;
-    object-fit: cover;
+/* app/static/main.css */
+
+/* General Body Styles */
+body {
+    background-color: #f8f9fa; /* Light background */
+    font-family: 'Inter', sans-serif; /* Use Inter font */
+    min-height: 100vh; /* Ensure body takes full viewport height for fixed positioning */
+    position: relative; /* Needed for fixed-bottom-right if button is inside body */
 }
 
-/* In static/main.css */
+/* Timeline Scroll Area (container for the tweet cards) */
+.timeline-scroll-area {
+    max-height: 600px; /* Max height for scrollability */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #e0e0e0; /* Light border */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 1rem; /* Rounded corners for the container */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+/* Custom Scrollbar (optional, for better aesthetics) */
+.timeline-scroll-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.timeline-scroll-area::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.timeline-scroll-area::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.timeline-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Tweet Card Styling */
+.tweet-card {
+    border: 1px solid #e0e0e0; /* Light border for each tweet */
+    background-color: #ffffff;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.tweet-card:hover {
+    transform: translateY(-2px); /* Slight lift on hover */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08); /* More pronounced shadow on hover */
+}
+
+.tweet-card .card-subtitle {
+    font-weight: 600; /* Semi-bold username */
+    color: #0d6efd; /* Primary color for username */
+}
+
+.tweet-card .card-text {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #343a40; /* Darker text for message */
+}
+
+.tweet-card .card-text.text-muted.small {
+    font-size: 0.75rem;
+    color: #6c757d !important; /* Muted text for timestamp */
+}
+
+/* HTMX Loading Indicator */
+#timeline-loading-indicator {
+    display: none; /* Hidden by default */
+}
+
+.htmx-request #timeline-loading-indicator {
+    display: block !important; /* Show when HTMX request is active */
+}
+
+/* Styling for the modal trigger button */
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-lg {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+}
+
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+
+/* Fixed bottom right button */
 .fixed-bottom-right {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000; /* Important to keep it on top */
+    bottom: 20px; /* Distance from bottom */
+    right: 20px; /* Distance from right */
+    z-index: 1050; /* Ensure it's above other content, below modal */
 }
 
+/* General improvements for modal */
+.modal-content {
+    border-radius: 1rem;
+    box-shadow: 0 1rem 3rem rgba(0,0,0,.175);
+}
+
+.modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.modal-footer {
+    border-top: none;
+    padding-top: 0;
+}

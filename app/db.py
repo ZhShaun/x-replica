@@ -1,9 +1,7 @@
 from sqlmodel import create_engine, SQLModel, Session
+from .config import settings
 
-DATABASE_URL = "sqlite:///./sqlitedb.db"
-engine = create_engine(
-    DATABASE_URL, echo=True, connect_args={"check_same_thread": False}
-)   # `check_same_thread=False` for SQLite with FastAPI (allows concurrent access)
+engine = create_engine(settings.DATABASE_URL, echo=True)
 
 
 def create_db_and_tables():
