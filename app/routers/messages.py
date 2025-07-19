@@ -22,7 +22,7 @@ def submit_modal_form(
         return Response(
             content="",
             status_code=200,
-            headers={"HX-Trigger": "closeModal, refreshTimeline"},
+            headers={"HX-Trigger": "refreshTimeline, closeModal"},
         )
     except Exception as e:
         print(f"Error saving message: {e}")

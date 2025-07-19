@@ -5,8 +5,7 @@
 </div>
 <div class="modal-body">
     <p>{{ modal_body }}</p>
-    <form hx-post="/submit-modal-form" hx-target="closest .modal-content" hx-swap="innerHTML"> {# Removed hx-target and
-        hx-swap as HX-Trigger handles actions #}
+    <form hx-post="/submit-modal-form" hx-target="closest .modal-content" hx-swap="innerHTML"> 
         <div class="mb-3">
             <label for="userName" class="form-label">Your Name</label>
             <input type="text" class="form-control" id="userName" name="user_name" required>
